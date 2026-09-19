@@ -1,5 +1,6 @@
 package com.yuosef.demo1.springaiopen.Controller;
 
+import com.yuosef.demo1.springaiopen.Advisors.TokenUsageAuditResponse;
 import com.yuosef.demo1.springaiopen.Config.ChatClientConfig;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,7 +29,9 @@ public class MultiModelChatController {
 
     @GetMapping("/openai/chat")
     public String openaichat(@RequestParam("message") String message){
-        return openaichatClient.build().prompt(message).call().content();
+        return openaichatClient.build()
+                .prompt(message)
+                .call().content();
     }
     @GetMapping("/llama/chat")
     public String llamachat(@RequestParam("message") String message){

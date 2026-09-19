@@ -1,7 +1,10 @@
 package com.yuosef.demo1.springaiopen.Config;
 
+import com.openai.models.ChatModel;
+import com.yuosef.demo1.springaiopen.Advisors.TokenUsageAuditResponse;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +31,7 @@ public class ChatClientConfig {
 
     @Bean
     public ChatClient.Builder openAIChatClient(OpenAiChatModel openAiChatModel){
-        return ChatClient.builder(openAiChatModel).defaultAdvisors(new SimpleLoggerAdvisor());
+        return ChatClient.builder(openAiChatModel);
     }
     /*
     this bean created for another local ai docker model we needed to configure it manually
